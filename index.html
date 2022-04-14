@@ -1,0 +1,612 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=sunburst-drink
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+var data = [
+  {
+    name: '味觉\nTASTE',
+    itemStyle: {
+      color: '#ffa2af'
+    },
+    children: [
+      {
+        name: '酸的',
+        itemStyle: {
+          color: '#ffa285'
+        },
+        children: [
+          {
+            name: '柠檬',
+            value: 1,
+            itemStyle: {
+              color: '#3e0317'
+            }
+          },
+          {
+            name: '菠萝',
+            value: 1,
+            itemStyle: {
+              color: '#e62969'
+            }
+          },
+          {
+            name: '四叶草',
+            value: 1,
+            itemStyle: {
+              color: '#6569b0'
+            }
+          },
+          {
+            name: '百香果',
+            value: 1,
+            itemStyle: {
+              color: '#ef2d36'
+            }
+          }
+        ]
+      },
+      {
+        name: '苦的',
+        itemStyle: {
+          color: '#ffc16f'
+        },
+        children: [
+          {
+            name: '苦瓜',
+            value: 1,
+            itemStyle: {
+              color: '#b53b54'
+            }
+          },
+          {
+            name: '蒲公英',
+            value: 1,
+            itemStyle: {
+              color: '#a5446f'
+            }
+          }
+        ]
+      },
+      {
+        name: '甜的',
+        itemStyle: {
+          color: '#ffd457'
+        },
+        children: [
+          {
+            name: '草莓',
+            value: 1,
+            itemStyle: {
+              color: '#f2684b'
+            }
+          },
+          {
+            name: '石榴',
+            value: 1,
+            itemStyle: {
+              color: '#e73451'
+            }
+          },
+          {
+            name: '番茄',
+            value: 1,
+            itemStyle: {
+              color: '#e65656'
+            }
+          },
+          {
+            name: '薯蓣叶',
+            value: 1,
+            itemStyle: {
+              color: '#f89a1c'
+            }
+          },
+          {
+            name: '樱桃',
+            value: 1,
+            itemStyle: {
+              color: '#aeb92c'
+            }
+          },
+          {
+            name: '苹果',
+            value: 1,
+            itemStyle: {
+              color: '#4eb849'
+            }
+          },
+          {
+            name: '蓝莓',
+            value: 1,
+            itemStyle: {
+              color: '#f68a5c'
+            }
+          },
+          {
+            name: '甘蔗',
+            value: 1,
+            itemStyle: {
+              color: '#baa635'
+            }
+          }
+        ]
+      },
+      {
+        name: '辣的',
+        itemStyle: {
+          color: '#ffc944'
+        },
+        children: [
+          {
+            name: '辣椒',
+            value: 1,
+            itemStyle: {
+              color: '#f26355'
+            }
+          },
+          {
+            name: '芥末',
+            value: 1,
+            itemStyle: {
+              color: '#e2631e'
+            }
+          },
+          {
+            name: '辣蓼草',
+            value: 1,
+            itemStyle: {
+              color: '#fde404'
+            }
+          },
+          {
+            name: '树脂大戟',
+            value: 1,
+            itemStyle: {
+              color: '#7eb138'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: '嗅觉\nSMELL',
+    itemStyle: {
+      color: '#Ffd537'
+    },
+    children: [
+      {
+        name: '臭烘烘',
+        value: 1,
+        itemStyle: {
+          color: '#d8d537'
+        }
+      },
+      {
+        name: '香喷喷',
+        itemStyle: {
+          color: '#b7d537'
+        },
+        children: [
+          {
+            name: '月季',
+            value: 1,
+            itemStyle: {
+              color: '#a2bb2b'
+            }
+          },
+          {
+            name: '米兰',
+            value: 1,
+            itemStyle: {
+              color: '#62aa3c'
+            }
+          },
+          {
+            name: '葱兰',
+            value: 1,
+            itemStyle: {
+              color: '#03a653'
+            }
+          },
+          {
+            name: '薄荷',
+            value: 1,
+            itemStyle: {
+              color: '#038549'
+            }
+          },
+          {
+            name: '玫瑰花',
+            value: 1,
+            itemStyle: {
+              color: '#28b44b'
+            }
+          },
+          {
+            name: '桂花',
+            value: 1,
+            itemStyle: {
+              color: '#a3a830'
+            }
+          },
+          {
+            name: '百合',
+            value: 1,
+            itemStyle: {
+              color: '#7ac141'
+            }
+          }
+        ]
+      },
+      {
+        name: '无味',
+        value: 1,
+        itemStyle: {
+          color: '#b7d59a'
+        }
+      }
+    ]
+  },
+  {
+    name: '触觉\nTACTILE',
+    itemStyle: {
+      color: '#Afcb23'
+    },
+    children: [
+      {
+        name: '柔软的',
+        itemStyle: {
+          color: '#9bd5bc'
+        },
+        children: [
+          {
+            name: '含羞草',
+            value: 1,
+            itemStyle: {
+              color: '#8b8c90'
+            }
+          },
+          {
+            name: '狗尾草',
+            value: 1,
+            itemStyle: {
+              color: '#beb276'
+            }
+          },
+          {
+            name: '牡丹花',
+            value: 1,
+            itemStyle: {
+              color: '#fefef4'
+            }
+          },
+          {
+            name: '地毯草',
+            value: 1,
+            itemStyle: {
+              color: '#744e03'
+            }
+          },
+          {
+            name: '天鹅绒',
+            value: 1,
+            itemStyle: {
+              color: '#a3a36f'
+            }
+          },
+          {
+            name: '百慕大',
+            value: 1,
+            itemStyle: {
+              color: '#c9b583'
+            }
+          },
+          {
+            name: '蒲公英',
+            value: 1,
+            itemStyle: {
+              color: '#978847'
+            }
+          },
+          {
+            name: '兔尾草',
+            value: 1,
+            itemStyle: {
+              color: '#9d977f'
+            }
+          },
+          {
+            name: '铜钱草',
+            value: 1,
+            itemStyle: {
+              color: '#cc7b6a'
+            }
+          },
+          {
+            name: '飘香藤',
+            value: 1,
+            itemStyle: {
+              color: '#db646a'
+            }
+          }
+        ]
+      },
+      {
+        name: '坚硬的',
+        itemStyle: {
+          color: '#6ad5cb'
+        },
+        children: [
+          {
+            name: '铁桦树',
+            value: 1,
+            itemStyle: {
+              color: '#80a89d'
+            }
+          },
+          {
+            name: '橡树',
+            value: 1,
+            itemStyle: {
+              color: '#def2fd'
+            }
+          },
+          {
+            name: '仙人掌',
+            value: 1,
+            itemStyle: {
+              color: '#7a9bae'
+            }
+          },
+          {
+            name: '橡树',
+            value: 1,
+            itemStyle: {
+              color: '#039fb8'
+            }
+          },
+          {
+            name: '松柏',
+            value: 1,
+            itemStyle: {
+              color: '#5e777b'
+            }
+          },
+          {
+            name: '多肉',
+            value: 1,
+            itemStyle: {
+              color: '#120c0c'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: '视觉\nSight',
+    itemStyle: {
+      color: '#00abe9'
+    },
+    children: [
+      {
+        name: '鲜艳的',
+        itemStyle: {
+          color: '#6ac1f1'
+        },
+        children: [
+          {
+            name: '太阳花',
+            value: 1,
+            itemStyle: {
+              color: '#b9a449'
+            }
+          },
+          {
+            name: '绣球花',
+            value: 1,
+            itemStyle: {
+              color: '#899893'
+            }
+          },
+          {
+            name: '波斯菊',
+            value: 1,
+            itemStyle: {
+              color: '#a1743b'
+            }
+          },
+          {
+            name: '三色堇',
+            value: 1,
+            itemStyle: {
+              color: '#894810'
+            }
+          }
+        ]
+      },
+      {
+        name: '黯淡的',
+        itemStyle: {
+          color: '#6a9fff'
+        },
+        children: [
+          {
+            name: '萱草',
+            value: 1,
+            itemStyle: {
+              color: '#b7906f'
+            }
+          },
+          {
+            name: '平菇',
+            value: 1,
+            itemStyle: {
+              color: '#eb9d5f'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: '听觉\nHEARING',
+    itemStyle: {
+      color: '#7579e1'
+    },
+    children: [
+      {
+        name: '悦耳的',
+        itemStyle: {
+          color: '#9e9fd7'
+        },
+        children: [
+          {
+            name: '风声',
+            value: 1,
+            itemStyle: {
+              color: '#d4ad12'
+            }
+          },
+          {
+            name: '鸟叫声',
+            value: 1,
+            itemStyle: {
+              color: '#9d5433'
+            }
+          },
+          {
+            name: '树叶声',
+            value: 1,
+            itemStyle: {
+              color: '#c89f83'
+            }
+          }
+        ]
+      },
+      {
+        name: '刺耳的',
+        itemStyle: {
+          color: '#df9aa9'
+        },
+        children: [
+          {
+            name: '雷电声',
+            value: 1,
+            itemStyle: {
+              color: '#692a19'
+            }
+          },
+          {
+            name: '蛙叫声',
+            value: 1,
+            itemStyle: {
+              color: '#470604'
+            }
+          }
+        ]
+      }
+    ]
+  },
+];
+option = {
+  title: {
+    text: 'PLAY WELL & PLAY IMPACT',
+    subtext: 'About"Nature-Deficit Disorder":Five Senses Plant Atlas',
+    textStyle: {
+      fontSize: 14,
+      align: 'center'
+    },
+    subtextStyle: {
+      align: 'center'
+    },
+    sublink: 'https://worldcoffeeresearch.org/work/sensory-lexicon/'
+  },
+  series: {
+    type: 'sunburst',
+    data: data,
+    radius: [0, '95%'],
+    sort: undefined,
+    emphasis: {
+      focus: 'ancestor'
+    },
+    levels: [
+      {},
+      {
+        r0: '15%',
+        r: '35%',
+        itemStyle: {
+          borderWidth: 2
+        },
+        label: {
+          rotate: 'tangential'
+        }
+      },
+      {
+        r0: '35%',
+        r: '70%',
+        label: {
+          align: 'right'
+        }
+      },
+      {
+        r0: '70%',
+        r: '72%',
+        label: {
+          position: 'outside',
+          padding: 3,
+          silent: false
+        },
+        itemStyle: {
+          borderWidth: 3
+        }
+      }
+    ]
+  }
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    
